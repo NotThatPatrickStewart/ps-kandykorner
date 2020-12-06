@@ -6,6 +6,7 @@ import { ProductProvider } from "./products/ProductProvider";
 import { ProductList } from "./products/ProductList";
 import { ProductTypeProvider } from "./products/ProductTypeProvider";
 import { EmployeeProvider } from "./employees/EmployeeProvider";
+import { EmployeeForm } from "./employees/EmployeeForm";
 import { EmployeeList } from "./employees/EmployeeList";
 
 export const ApplicationViews = (props) => {
@@ -30,11 +31,15 @@ export const ApplicationViews = (props) => {
               path="/employees"
               render={(props) => <EmployeeList {...props} />}
             />
+            <Route
+              exact
+              path="/employees/create"
+              render={(props) => <EmployeeForm {...props} />}
+            />
           </ProductProvider>
         </LocationProvider>
       </ProductTypeProvider>
       </EmployeeProvider>
-      ;
     </>
   );
 };
