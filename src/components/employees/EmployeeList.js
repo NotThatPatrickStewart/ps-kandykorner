@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Product } from "../products/Product";
 import { EmployeeContext } from "./EmployeeProvider";
-import { LocationContext } from "./EmployeeProvider";
+import { Employee } from "./Employee";
+import { LocationContext } from "../location/LocationProvider";
 
 
 export const EmployeeList = (props) => {
@@ -9,8 +10,8 @@ export const EmployeeList = (props) => {
     const { locations, getLocations } = useContext(LocationContext)
 
     useEffect(() => {
-        getEmployees()
-        .then(getLocations)
+        getLocations()
+        .then(getEmployees)
     }, [])
 
     return (
@@ -23,9 +24,12 @@ export const EmployeeList = (props) => {
             <article className="employeeList">
                 {employees.map((employee) => {
                     const store = locations.find(
-                        (l) => (
-                            l.id === employee.locationId
+                        (location) => (
+                            location.id === employee.locationId  
                 ))
+                console.log("locations:", locations)
+               // console.log("fetch test:", location)
+                console.log("store:", store)
                 return (
                     <Employee
                         key={employee.id}
