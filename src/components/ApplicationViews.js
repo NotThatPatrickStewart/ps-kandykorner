@@ -12,13 +12,13 @@ export const ApplicationViews = (props) => {
         <ProductProvider>
           <Route
             exact
-            path="/"
-            render={(props) => (
-              <>
-                <LocationList />
-                <ProductList {...props} />
-              </>
-            )}
+            path="/locations"
+            render={(props) => <LocationList {...props} />}
+          />
+          <Route
+            exact
+            path="/products"
+            render={(props) => <ProductList {...props} />}
           />
         </ProductProvider>
       </LocationProvider>
@@ -27,18 +27,18 @@ export const ApplicationViews = (props) => {
   );
 };
 
-//This is the same as above, but not as dry as it uses Route twice for the same path
+//DRY way to have 2 lists together if path is the same
 /* <LocationProvider>
         <ProductProvider>
           <Route
             exact
             path="/"
-            render={(props) => <LocationList {...props} />}
-          />
-          <Route
-            exact
-            path="/"
-            render={(props) => <ProductList {...props} />}
+            render={(props) => (
+              <>
+                <LocationList />
+                <ProductList {...props} />
+              </>
+            )}
           />
         </ProductProvider>
       </LocationProvider> */
