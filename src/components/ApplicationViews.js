@@ -5,10 +5,13 @@ import { Route } from "react-router-dom";
 import { ProductProvider } from "./products/ProductProvider";
 import { ProductList } from "./products/ProductList";
 import { ProductTypeProvider } from "./products/ProductTypeProvider";
+import { EmployeeProvider } from "./employees/EmployeeProvider";
+import { EmployeeList } from "./employees/EmployeeList";
 
 export const ApplicationViews = (props) => {
   return (
     <>
+    <EmployeeProvider>
       <ProductTypeProvider>
         <LocationProvider>
           <ProductProvider>
@@ -22,9 +25,15 @@ export const ApplicationViews = (props) => {
               path="/products"
               render={(props) => <ProductList {...props} />}
             />
+            <Route
+              exact
+              path="/employees"
+              render={(props) => <EmployeeList {...props} />}
+            />
           </ProductProvider>
         </LocationProvider>
       </ProductTypeProvider>
+      </EmployeeProvider>
       ;
     </>
   );
