@@ -18,14 +18,15 @@ export const EmployeeForm = (props) => {
 
     const constructNewEmployee = () => {
         const locationId = parseInt(location.value)
+        let managerboolean = "" //if manager value is 1, manager boolean = true, else false
 
         if (locationId === 0) {
         window.alert("Select location")
         } else {
             addEmployee({
                 name: name.value,
-                manager: manager.value,
-                fullTime: fullTime.value,
+                // manager: manager.value,
+                // fullTime: fullTime.value,
                 hourlyRate: hourlyRate.value,
                 locationId
 
@@ -45,19 +46,20 @@ export const EmployeeForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="employeeLocation">Assign to Location: </label>
-                    <select defaultValue="" id="employeeLocation" ref={location} className="form-control" />
+                    <select defaultValue="" id="employeeLocation" ref={location} className="form-control" >
                     <option value="0">Select Location</option>
                     {locations.map(employee => (
                         <option key={employee.id} value={employee.id}>
                             {employee.name}
                         </option>
                     ))}
+                    </select>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="employeeManager">Is Employee a Manager? </label>
-                    <select defaultValue="" id="employeeManager" ref={manager} className="form-control" />
+                    <select defaultValue="" id="employeeManager" ref={manager} className="form-control" >
                     <option value="0">Manager?</option>
                     <option value="1">Yes</option>
                     <option value="2">No</option>
@@ -66,12 +68,13 @@ export const EmployeeForm = (props) => {
                             {employee.manager}
                         </option>
                     ))}
+                    </select>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="employeeHours">Is Employee Full Time? </label>
-                    <select defaultValue="" id="employeeHours" ref={fullTime} className="form-control" />
+                    <select defaultValue="" id="employeeHours" ref={fullTime} className="form-control" >
                     <option value="0">Full Time?</option>
                     <option value="1">Yes</option>
                     <option value="2">No</option>
@@ -80,6 +83,7 @@ export const EmployeeForm = (props) => {
                             {employee.fullTime}
                         </option>
                     ))}
+                    </select>
                 </div>
             </fieldset>
             <fieldset>
